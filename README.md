@@ -57,3 +57,12 @@ http://127.0.0.1:8080/index.html
 http://127.0.0.1:8080/phpinfo.php
 phpinfoの情報が表示されることを確認する。
 webサーバーがappサーバーへphpを実行させ結果を返してくれることを確認。
+
+## Laravelをインストール
+`docker compose exec app bash`
+
+`composer create-project --prefer-dist "laravel/laravel=8.*" .`
+
+`php artisan -V`
+
+http://127.0.0.1:8080/
