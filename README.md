@@ -1,5 +1,6 @@
 # docker-laravel-handson
-## build & up
+## php
+### build & up
 - appコンテナの作成
 - PHPのバージョン確認
 - Laravelで必要なPHP拡張機能の確認
@@ -15,7 +16,7 @@
   - 特に変更がない場合はキャッシュが使用されます。
 
 
-## appコンテナ内ミドルウェアのバージョン確認(コンテナに入ってコマンド実行)
+### appコンテナ内ミドルウェアのバージョン確認(コンテナに入ってコマンド実行)
 作成したappコンテナの中に入ってPHP, Composerのバージョン、インストール済みの拡張機能を確認します。
 
 `docker compose exec app bash`
@@ -31,3 +32,28 @@
 - インストール済みの拡張機能の一覧
 
 `php -m`
+
+## nginx
+### build & up
+`docker compose up -d`
+
+nginxのバージョン確認
+
+`docker compose exec web nginx -v`
+
+### webコンテナの確認
+- webコンテナの動作確認
+- HTMLとPHPが表示されるか
+
+`mkdir backend/public`
+
+`echo "Hello World" > backend/public/index.html`
+
+`echo "<?php phpinfo();" > backend/public/phpinfo.php`
+
+http://127.0.0.1:8080/index.html
+「Hello World」が表示されたらwebサーバーが正しく動作している。
+
+http://127.0.0.1:8080/phpinfo.php
+phpinfoの情報が表示されることを確認する。
+webサーバーがappサーバーへphpを実行させ結果を返してくれることを確認。
