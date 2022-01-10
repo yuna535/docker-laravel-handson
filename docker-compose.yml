@@ -1,0 +1,6 @@
+version: "3.9" # Docker Composeファイルのバージョンを指定
+services:
+  app: # サービス名は任意
+    build: ./infra/php # ビルドコンテキスト(docker buildを実行する際のDockerfile が置かれている作業ディレクトリ)を指定
+    volumes: # ホスト側のディレクトリや名前付きボリュームをコンテナ側へマウントしたい時に指定。今回はホスト側の ./backend ディレクトリをappサービスのコンテナ内 /work へマウント。
+      - ./backend:/work
