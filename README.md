@@ -66,3 +66,8 @@ webサーバーがappサーバーへphpを実行させ結果を返してくれ�
 `php artisan -V`
 
 http://127.0.0.1:8080/
+
+
+## mysqlコンテナ作成
+### mysqlバージョン確認
+`docker compose exec db mysql -V`
