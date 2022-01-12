@@ -71,3 +71,30 @@ http://127.0.0.1:8080/
 ## mysqlコンテナ作成
 ### mysqlバージョン確認
 `docker compose exec db mysql -V`
+
+
+## 再構築方法
+`docker compose exec app bash`
+
+`composer install`
+
+127.0.0.1:10080
+
+composer install 時は .env 環境変数ファイルは作成されないので、 .env.example を元にコピー
+
+`cp .env.example .env`
+
+`php artisan key:generate`
+
+public/storage から storage/app/public へのシンボリックリンクを張る
+システムで生成したファイル等をブラウザからアクセスできるよう公開するためにシンボリックリンクを張る
+
+`php artisan storage:link`
+
+storage, bootstrap/cache はフレームワークからファイル書き込みが発生するので、書き込み権限を与える必要がある。
+
+`chmod -R 777 storage bootstrap/cache`
+
+welcome画面
+
+`php artisan migrate`
