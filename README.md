@@ -98,3 +98,26 @@ storage, bootstrap/cache はフレームワークからファイル書き込み�
 welcome画面
 
 `php artisan migrate`
+
+
+## Laravelのログをコンテナに表示する
+backend/.env
+
+`LOG_CHANNEL=stderr`
+
+backend/routes/web.php
+
+Route::get('/', function () {
+    logger('welcome route.');
+    return view('welcome');
+});
+
+$ docker compose logs
+-f でログウォッチ
+$ docker compose logs -f
+サービス名を指定してログを表示
+$ docker compose logs -f app
+
+## mysqlクライアントツール
+ports:
+      - 33060:3306
