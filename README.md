@@ -102,22 +102,26 @@ welcome画面
 
 ## Laravelのログをコンテナに表示する
 backend/.env
-
-`LOG_CHANNEL=stderr`
+```
+LOG_CHANNEL=stderr
+```
 
 backend/routes/web.php
-
+```
 Route::get('/', function () {
     logger('welcome route.');
     return view('welcome');
 });
-
+```
+```
 $ docker compose logs
 -f でログウォッチ
 $ docker compose logs -f
 サービス名を指定してログを表示
 $ docker compose logs -f app
-
+```
 ## mysqlクライアントツール
+```
 ports:
       - 33060:3306
+```
